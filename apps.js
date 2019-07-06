@@ -1,8 +1,9 @@
 const yargs = require('yargs')
+const notes = require('./notes.js')
 
 // here notes, is now containing two property from 
 // notes.js file, so we can term it as an object
-const notes = require('./notes.js')
+
 
 yargs.command({
     command: 'add',
@@ -19,7 +20,7 @@ yargs.command({
             type: 'string'
         }
     },
-    handler: function(argv) {
+    handler(argv) {
     notes.addNote(argv.title, argv.body)
     }
 })
@@ -33,22 +34,29 @@ yargs.command({
             type: 'string'
         }
     },
-    handler: function(argv){
+    handler(argv){
         notes.removeNote(argv.title)
     }
 })
 yargs.command({
     command:'read',
     describe:'Read a note',
-    handler: function(){
-        console.log('Reading a note!')
+    builder: {
+        title:{
+            describe: "Note title",
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler(argv){
+        notes.readNotes(argv.title)
     }
 })
 yargs.command({
     command:'list',
     describe:'List a note',
-    handler: function(){
-        console.log('List out all the notes!')
+    handler(){
+        notes.listNotes()
     }
 })
 yargs.parse()
