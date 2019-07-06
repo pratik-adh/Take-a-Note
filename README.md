@@ -8,7 +8,7 @@ It is a simple application created in JS language using Node.js Framework. It he
     $node apps.js remove
     <br>
 3.  For listing out the total number of notes:<br>
-    $node apps.js list<br>
+    $node apps.js list
     <br>
 4.  For reading a particular note:<br>
     $node apps.js read --title="title_of_the_particular_note_that_you_want_to_read"
